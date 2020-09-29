@@ -9,7 +9,7 @@
     background: cornflowerblue;
     color: #fff;
     font-family: Arial,sans-serif;
-    height: 150px;
+    height: 100px;
 }
 .container{
     width: 1200px;
@@ -30,118 +30,26 @@
     border-radius: 6px;
 }
 .right-side{
-    width: 50%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    width: 30%;
 }
-
 input{
     padding: 10px;
-    margin-right: 10px;
 }
 ul{
     display: flex;
-    justify-content: start;
+    justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
-    height: 100px;
+    width: 24%;
+    padding: 20px;
+    background-color: #cecece;
+    margin: 5px;
 }
 li{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #cecece;
-    width: 15%;
     list-style: none;
     align-items: center;
     border: 1px solid #cecece;
     padding: 5px;
-    text-align: center;
-    margin: 10px;
-    height: 200px;
-}
-.task-name{
-    margin-bottom: 10px;
-}
-p{
-    font-size: 20px;
-}
-.data{
-    display: flex;
-    flex-direction: column;
-}
-.data p{
-    font-size: 12px;
-}
-.modal-btn{
-    border: none;
-    background: none;
-    transform: rotate(45deg);
-    outline: none;
-    cursor: pointer;
-}
-.modal-btn p{
-    font-size: 22px;
-}
-
-.overlay{
-    display: none;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    text-align: center;
-    align-items: center;
-    background: #38bcff;
-    opacity: 90%;
-}
-.close-window{
-    position: fixed;
-    top: 90%;
-    left: 15%;
-    color: wheat;
-    background: red;
-    outline: none;
-    border: none;
-    padding: 10px;
-    width: 70px;
-    border-radius: 30%;
-    cursor: pointer;
-}
-.close-window:hover{
-    background: #ff6b70;
-    color: white;
-    transition: 1s;
-}
-.save{
-    position: fixed;
-    top: 90%;
-    right: 15%;
-    color: wheat;
-    background: green;
-    outline: none;
-    border: none;
-    padding: 10px;
-    width: 70px;
-    border-radius: 30%;
-    cursor: pointer;
-}
-.save:hover{
-    background: #0069ff;
-    color: white;
-    transition: 1s;
-}
-.modal-wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-.choose-data{
-    display: flex;
-    flex-direction: column;
 }
