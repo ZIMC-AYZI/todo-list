@@ -1,29 +1,30 @@
 import { AbstractComponent } from './abststract.component.js';
-import { ListComponent } from './list.component.js';
-import { BODY_ELEMENT, insertPosition, renderElement } from '../../utils.js';
+
 
 export class HeaderComponent extends AbstractComponent{
     constructor() {
         super();
-    }
-    getInput() {
-        return document.querySelector('.input')
-    }
-    _createTask(e) {
-        const value = this.getInput().value;
-        if (e.keyCode === 13 ){
-            const listComponent = new ListComponent(value),
-            listElement = listComponent.getElement();
-            renderElement(BODY_ELEMENT, listElement, insertPosition.BEFORE_END);
 
-            this.getInput().value = null;
-        }
     }
+
     addEventListeners() {
-        this.getInput().addEventListener('keypress', this._createTask.bind(this))
+        this.getModalBtn().addEventListener('click', this._createModal.bind(this));
     }
-    _afterCreate() {
 
+    getModalBtn() {
+        return document.querySelector('.modal-btn');
+    }
+
+    _createModal() {
+        this.showModal();
+    }
+
+    getModal() {
+        return document.querySelector('.overlay');
+    }
+
+    showModal() {
+            this.getModal().style.display = 'flex';
     }
 
     _getTemplate() {
@@ -31,10 +32,11 @@ export class HeaderComponent extends AbstractComponent{
                     <div class="container">
                         <div class="header-wrapper">
                             <div class="logo">
-                                toDO
+                                blacknote
                             </div>
                             <div class="right-side">
                                 <p>Create new task</p> <input class="input" type="text">
+                                <button class="modal-btn"><p>&#10006;</p></button>
                            </div>
                         </div>
                         </div>
