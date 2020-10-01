@@ -2,8 +2,7 @@ import { AbstractComponent } from './abststract.component.js';
 import { ItemComponent } from './item.component.js';
 import { insertPosition, renderElement } from '../../utils.js';
 import { enterKey, isValid } from '../../utils.js';
-import { addToData, createData, updateData,updateCheckboxStatus } from '../task.services.js';
-import { taskData } from '../task.services.js';
+import { addToData, createData, updateData } from '../task.services.js';
 
 
 export class ListComponent extends AbstractComponent{
@@ -16,7 +15,7 @@ export class ListComponent extends AbstractComponent{
         return document.querySelector('.input')
     }
 
-    ifValueValidate() {
+    ValueValidate() {
         const value = this.getInput().value;
 
         if (isValid(value) && value !== '') {
@@ -32,7 +31,7 @@ export class ListComponent extends AbstractComponent{
 
     _createTask(e) {
         if (e.keyCode === enterKey) {
-            this.ifValueValidate();
+            this.ValueValidate();
         }
     }
 
@@ -65,7 +64,6 @@ export class ListComponent extends AbstractComponent{
                 itemElement = itemComponent.getElement();
             renderElement(this.getElement(), itemElement, insertPosition.BEFORE_END);
             itemComponent.addEventListeners();
-
 
         });
 

@@ -53,11 +53,11 @@ export class ModalComponent extends AbstractComponent {
 
     addTask(e) {
         if (e.keyCode === enterKey || e.target === this.getSaveBtn()) {
-            this.ifModalValueValidate();
+            this.ModalValueValidate();
         }
     }
 
-    ifModalValueValidate() {
+    ModalValueValidate() {
         const value = this.getInput().value;
         if (isValid(value) && value !== '') {
             this.getInput().style.outline = 'none';
