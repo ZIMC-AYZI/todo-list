@@ -1,7 +1,6 @@
 import { HeaderComponent } from './components/header.component.js';
 import { BODY_ELEMENT, insertPosition, renderElement } from '../utils.js';
 import { ModalComponent } from './components/modal.component.js';
-import { ItemComponent } from './components/item.component.js';
 import { taskData } from './task.services.js';
 import { MAIN_ELEMENT } from '../utils.js';
 import { ListComponent } from './components/list.component.js';
@@ -10,12 +9,15 @@ import { EditComponent } from './components/edit.component.js';
 
 export class appComponent {
     init () {
-        const modalComponent = new ModalComponent(),
+
+        const editComponent = new EditComponent(),
+            editElement = editComponent.getElement();
+        renderElement(BODY_ELEMENT, editElement, insertPosition.BEFORE_BEGIN);
+
+        const modalComponent = new ModalComponent(taskData),
             modalElement = modalComponent.getElement();
         renderElement(BODY_ELEMENT,modalElement, insertPosition.BEFORE_BEGIN);
         modalComponent.addEventListeners();
-
-
 
         const headerComponent = new HeaderComponent(taskData),
             headerElement = headerComponent.getElement();

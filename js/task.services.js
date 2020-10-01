@@ -1,7 +1,7 @@
 import { getCurrentDate,getDeadlineDate } from '../utils.js';
 
-export const taskData = [
-    { id: 1, taskTitle: 'Купить инструменты.',dateCreate: getCurrentDate(),deadlineDate : getDeadlineDate(),  isChecked: false, img : './images/1.png'},
+export let taskData = [
+    { id: 1, taskTitle: 'Купить инструменты.',dateCreate: getCurrentDate(),deadlineDate : getDeadlineDate(),  isChecked: true, img : './images/1.png'},
     { id: 2, taskTitle: 'Закончить проект.' ,dateCreate: getCurrentDate(),deadlineDate : getDeadlineDate(),  isChecked: false, img : './images/1.png'},
     { id: 3, taskTitle: 'Купить зимнюю куртку.',dateCreate: getCurrentDate(),deadlineDate : getDeadlineDate(), isChecked: false, img : './images/1.png'},
     { id: 4, taskTitle: 'Купить еду.',dateCreate: getCurrentDate(),deadlineDate : getDeadlineDate(),  isChecked: false, img : './images/1.png'},
@@ -29,8 +29,25 @@ export function genId(array) {
 }
                 // custom event
 
-export function updateData() {
-    emmitEvent('update')
+export function updateData(array) {
+    emmitEvent('update',array)
+}
+
+export function deleteTask(item) {
+    taskData = taskData.filter(el => el.id !== item.id)
+
+    emmitEvent('delete-task',taskData)
+}
+
+export function updateCheckboxStatus(item) {
+
+     taskData.filter(el => {
+        if(el.isChecked !== item.isChecked) {
+            el = item;
+            return el;
+        }
+    });
+    emmitEvent('updateCheckbox',taskData)
 }
 
 export function emmitEvent(type,data) {

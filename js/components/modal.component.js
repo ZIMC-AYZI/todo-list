@@ -5,9 +5,9 @@ import { enterKey,} from '../../utils.js';
 
 
 export class ModalComponent extends AbstractComponent {
-    constructor() {
+    constructor(taskData) {
         super();
-
+        this.taskData = taskData
     }
                          // close Btn
     getCloseBtn() {
@@ -62,7 +62,7 @@ export class ModalComponent extends AbstractComponent {
         if (isValid(value) && value !== '') {
             this.getInput().style.outline = 'none';
             addToData(this.createNewData());
-            updateData();
+            updateData(this.taskData);
 
             console.log(taskData);
 
