@@ -1,13 +1,13 @@
 import { AbstractComponent } from './abststract.component.js';
 import { isValid } from '../../utils.js';
-import { addToData, createData, taskData, updateData,genId } from '../task.services.js';
-import { enterKey,getCurrentDate } from '../../utils.js';
+import { addToData, taskData, updateData,genId } from '../task.services.js';
+import { enterKey,} from '../../utils.js';
 
 
 export class ModalComponent extends AbstractComponent {
-    constructor() {
+    constructor(taskData) {
         super();
-
+        this.taskData = taskData
     }
                          // close Btn
     getCloseBtn() {
@@ -46,29 +46,34 @@ export class ModalComponent extends AbstractComponent {
             taskTitle: this.getInput().value,
             dateCreate : this.getCalendarStart().value,
             deadlineDate : this.getCalendarEnd().value,
-            isChecked: false
+            isChecked: false,
+            img : './images/1.png'
         }
     }
 
     addTask(e) {
-        const value = this.getInput().value;
         if (e.keyCode === enterKey || e.target === this.getSaveBtn()) {
-            if (isValid(value)) {
-                this.getInput().style.outline = 'none';
-                addToData(this.createNewData());
-                console.log(taskData)
-                updateData();
-
-                this.getInput().value = '';
-                this.closeModal();
-
-            } else {
-
-                this.getInput().style.outline = '1px solid red';
-                this.getInput().value = '';
-            }
+            this.ModalValueValidate();
         }
+    }
 
+    ModalValueValidate() {
+        const value = this.getInput().value;
+        if (isValid(value) && value !== '') {
+            this.getInput().style.outline = 'none';
+            addToData(this.createNewData());
+            updateData(this.taskData);
+
+            console.log(taskData);
+
+            this.getInput().value = '';
+            this.closeModal();
+
+        } else {
+
+            this.getInput().style.outline = '1px solid red';
+            this.getInput().value = '';
+        }
     }
     _afterCreate() {
 
@@ -79,11 +84,11 @@ export class ModalComponent extends AbstractComponent {
             <div class="container">
                 <div class="modal-window">
                 <div class="modal-wrapper">
-                    <p>Create new task</p> <input class="modal-input" type="text">
+                    <p class="new-task">Create new task</p> <input class="modal-input" type="text">
                         <div class="choose-data">
-                            <label for="start">Start date : </label>
+                            <label class="start">Start date &dArr; </label>
                             <input type="date" class="calendar-start">
-                            <label for="finish">Finish date : </label>
+                            <label class="finish">Finish date &dArr; </label>
                             <input type="date" class="calendar-finish">
                         </div>
                     </div>

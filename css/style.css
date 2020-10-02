@@ -6,10 +6,14 @@
 .header {
     display: flex;
     align-items: center;
-    background: cornflowerblue;
+    background: #905649;
     color: #fff;
     font-family: Arial,sans-serif;
-    height: 100px;
+    height: 150px;
+}
+.logo{
+    font-size: 50px;
+    text-transform: uppercase;
 }
 .container{
     width: 1200px;
@@ -20,36 +24,178 @@
     justify-content: space-around;
     align-items: center;
 }
-.favorites-btn{
-    cursor: pointer;
-    color: #cecece;
-    background: darkblue;
-    width: 200px;
-    padding: 10px;
-    border: 1px solid blue;
-    border-radius: 6px;
-}
+
 .right-side{
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 30%;
 }
+
 input{
     padding: 10px;
 }
 ul{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 24%;
-    padding: 20px;
-    background-color: #cecece;
-    margin: 5px;
+    width: 100%;
+    height: 100px;
 }
 li{
+    display: flex;
+    justify-content: start;
+    background-color: #5d7897;
+    width: 100%;
     list-style: none;
     align-items: center;
     border: 1px solid #cecece;
     padding: 5px;
+    margin: 10px 0;
+    height: 100px;
+}
+p.task-name{
+    padding-left: 15px;
+    font-size: 30px;
+    font-family: Arial;
+}
+p{
+    font-size: 20px;
+}
+.data{
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+}
+.data p{
+    font-size: 20px;
+    width: 20%;
+    color: #e8dbc8;;
+}
+.remove{
+    width: 43px;
+    height: 32px;
+    border: none;
+    border-radius: 20%;
+    color: #fff;
+    background: #6b353c;
+    cursor: pointer;
+    margin-right: 10%;
+}
+.task-done{
+    text-decoration: line-through;
+    transition: 1.5s;
+}
+.modal-btn{
+    border: none;
+    background: none;
+    transform: rotate(45deg);
+    outline: none;
+    cursor: pointer;
+}
+
+.modal-btn p{
+    font-size: 22px;
+    transition: 1s;
+    width: 20px;
+}
+.modal-btn p:hover{
+    transform: rotate(45deg);
+    transition: 0.6s;
+    font-size: 25px;
+}
+.overlay{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    text-align: center;
+    align-items: center;
+    background: #58585e;
+    opacity: 90%;
+}
+.modal-input{
+    margin: 0 20px;
+}
+.start, .finish{
+    color: #fff;
+    font-size: 50px;
+}
+p.new-task {
+    color: #fff;
+    font-size: 34px;
+    width: 10%;
+}
+.close-window{
+    position: fixed;
+    top: 90%;
+    left: 15%;
+    color: wheat;
+    background: red;
+    outline: none;
+    border: none;
+    padding: 10px;
+    width: 70px;
+    border-radius: 30%;
+    cursor: pointer;
+}
+.close-window:hover{
+    background: #ff6b70;
+    color: white;
+    transition: 1s;
+}
+.save{
+    position: fixed;
+    top: 90%;
+    right: 15%;
+    color: wheat;
+    background: green;
+    outline: none;
+    border: none;
+    padding: 10px;
+    width: 70px;
+    border-radius: 30%;
+    cursor: pointer;
+}
+.save:hover{
+    background: #0069ff;
+    color: white;
+    transition: 1s;
+}
+.modal-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.choose-data{
+    display: flex;
+    flex-direction: column;
+}
+.edit-todo{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+}
+.edit{
+    width: 100%;
+    height: 100%;
+}
+.edit-overlay{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    text-align: center;
+    align-items: center;
+    background: #58585e;
+    opacity: 90%;
 }
