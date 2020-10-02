@@ -63,8 +63,8 @@ export class ModalComponent extends AbstractComponent {
             this.getInput().style.outline = 'none';
             addToData(this.createNewData());
             updateData(this.taskData);
+            console.log('modal', this.getCalendarStart().value)
 
-            console.log(taskData);
 
             this.getInput().value = '';
             this.closeModal();

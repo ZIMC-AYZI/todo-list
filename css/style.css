@@ -145,7 +145,7 @@ p.new-task {
     color: white;
     transition: 1s;
 }
-.save{
+.save, .edit-save{
     position: fixed;
     top: 90%;
     right: 15%;
