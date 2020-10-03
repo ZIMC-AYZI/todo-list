@@ -101,6 +101,11 @@ p{
     transition: 0.6s;
     font-size: 25px;
 }
+.modal-window {
+    display: flex;
+    justify-content: center;
+    border: 10px solid #fff;
+}
 .overlay{
     display: none;
     position: fixed;
@@ -112,33 +117,42 @@ p{
     overflow: auto;
     text-align: center;
     align-items: center;
-    background: #58585e;
+    background: #000002;
     opacity: 90%;
+}
+.edit-modal-wrapper{
+    padding: 10px 0;
+}
+.edit-modal-window {
+    width: 500px;
+    margin-left: 30%;
+    background: #614040;
+    border: 10px solid #fff;
 }
 .modal-input{
     margin: 0 20px;
 }
 .start, .finish{
     color: #fff;
-    font-size: 50px;
+    font-size: 30px;
+    padding: 5px 0;
 }
 p.new-task {
     color: #fff;
     font-size: 34px;
-    width: 10%;
 }
 .close-window{
     position: fixed;
-    top: 90%;
-    left: 15%;
+    top: 80%;
+    left: 18%;
     color: wheat;
     background: red;
     outline: none;
     border: none;
-    padding: 10px;
-    width: 70px;
     border-radius: 30%;
     cursor: pointer;
+    padding: 20px;
+    width: 100px;
 }
 .close-window:hover{
     background: #ff6b70;
@@ -147,14 +161,14 @@ p.new-task {
 }
 .save, .edit-save{
     position: fixed;
-    top: 90%;
-    right: 15%;
+    top: 80%;
+    right: 18%;
     color: wheat;
     background: green;
     outline: none;
     border: none;
-    padding: 10px;
-    width: 70px;
+    padding: 20px;
+    width: 100px;
     border-radius: 30%;
     cursor: pointer;
 }
@@ -167,10 +181,12 @@ p.new-task {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px 0;
 
 }
 .choose-data{
     display: flex;
+    align-items: center;
     flex-direction: column;
 }
 .edit-todo{
@@ -180,6 +196,9 @@ p.new-task {
     background: none;
     cursor: pointer;
 
+}
+p.edit-task {
+    color: #fff;
 }
 .edit{
     width: 100%;
@@ -196,6 +215,33 @@ p.new-task {
     overflow: auto;
     text-align: center;
     align-items: center;
-    background: #58585e;
+    background: #000002;
     opacity: 90%;
+}
+.menu-btn{
+    display: flex;
+    width: 300px;
+    justify-content: space-around;
+}
+.menu-btn button {
+    width: 70px;
+    height: 50px;
+    background: #5d7897;
+    border-radius: 28%;
+    outline: none;
+    border: 1px solid #cecece;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 1s;
+}
+.menu-btn button:hover{
+    transition: 1s;
+    color: #fff;
+    background: #6b353c;
+    font-size: 15px;
+    border: 1px solid #fff;
+}
+.sort-options{
+    cursor: pointer;
 }
