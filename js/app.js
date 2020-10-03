@@ -10,9 +10,7 @@ import { EditComponent } from './components/edit.component.js';
 export class appComponent {
     init () {
 
-        const editComponent = new EditComponent(),
-            editElement = editComponent.getElement();
-        renderElement(BODY_ELEMENT, editElement, insertPosition.BEFORE_BEGIN);
+
 
         const modalComponent = new ModalComponent(taskData),
             modalElement = modalComponent.getElement();

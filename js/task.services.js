@@ -33,6 +33,24 @@ export function updateData(array) {
     emmitEvent('update',array)
 }
 
+
+
+
+export function renameTasks(item) {
+   taskData.filter(el => {
+       if (el.id !== item.id){
+           el = item;
+           return el;
+       }
+   });
+
+    emmitEvent('updateTasks', taskData)
+}
+
+
+
+
+
 export function deleteTask(item) {
     taskData = taskData.filter(el => el.id !== item.id)
 

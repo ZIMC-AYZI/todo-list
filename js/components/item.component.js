@@ -28,14 +28,16 @@ export class ItemComponent extends AbstractComponent{
             this.getElement().classList.remove('task-done');
             this.getCheckbox().checked = false;
         }
+
+
     }
 
 
 
     addEventListeners() {
-        this.getEditModalBtn().addEventListener('click', this.createEditModal.bind(this));
         this.getCheckbox().addEventListener('click', this.updateState.bind(this));
         this.getCloseBtn().addEventListener('click', this.removeTask.bind(this));
+        this.getEditModalBtn().addEventListener('click', this.createEditModal.bind(this));
 
     }
 
@@ -59,15 +61,41 @@ export class ItemComponent extends AbstractComponent{
 
     createEditModal() {
         this.showEditModal();
+
     }
 
     getEditModal() {
         return document.querySelector('.edit-overlay');
     }
+    getEditValue() {
+        return document.querySelector('.edit-modal-input');
+    }
+
+
+    getEditStartDate() {
+        return document.querySelector('.calendar-start')
+    }
+
+    getEditDeadlineDate() {
+        return document.querySelector('.calendar-finish')
+    }
+
 
     showEditModal() {
+        const editComponent = new EditComponent(this.value),
+            editElement = editComponent.getElement();
+        renderElement(BODY_ELEMENT, editElement, insertPosition.BEFORE_BEGIN);
+        editComponent.addEventListeners();
+
+        console.log(this.getEditStartDate().value)
         this.getEditModal().style.display = 'flex';
+        this.getEditValue().value = this.taskTitle;
+        this.getEditStartDate().value = this.dateCreate;
+        this.getEditDeadlineDate().value = this.deadlineDate;
+
     }
+
+
     getCheckbox() {
         return this.getElement().firstChild.nextSibling
     }

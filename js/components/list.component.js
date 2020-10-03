@@ -47,6 +47,7 @@ export class ListComponent extends AbstractComponent{
         this.getInput().addEventListener('keypress', this._createTask.bind(this));
         window.addEventListener('updateCheckbox', this.dataChange.bind(this));
         window.addEventListener('delete-task', this.dataChange.bind(this));
+        window.addEventListener('updateTasks', this.dataChange.bind(this));
 
     }
     dataChange(e) {
