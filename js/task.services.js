@@ -100,3 +100,26 @@ export function emmitEvent(type,data) {
     }))
 }
 
+export function sortByDate() {
+    taskData = taskData.sort((a,b) => {
+        if (a.dateCreate < b.dateCreate){
+            return -1;
+        } else {
+            return 1;
+        }
+    });
+
+    emmitEvent('sort-by-date', taskData)
+}
+
+export function sortByText() {
+    taskData = taskData.sort((a, b) => {
+        if (a.taskTitle < b.taskTitle) {
+            return -1;
+        } else {
+            return 1;
+        }
+    });
+
+    emmitEvent('sort-by-text', taskData)
+}

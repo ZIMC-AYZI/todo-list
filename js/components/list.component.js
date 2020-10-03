@@ -53,6 +53,8 @@ export class ListComponent extends AbstractComponent{
         window.addEventListener('show-all-tasks', this.dataChange.bind(this));
         window.addEventListener('show-active-tasks', this.dataChange.bind(this));
         window.addEventListener('delete-completed-tasks', this.dataChange.bind(this));
+        window.addEventListener('sort-by-date', this.dataChange.bind(this));
+        window.addEventListener('sort-by-text', this.dataChange.bind(this));
 
     }
     dataChange(e) {

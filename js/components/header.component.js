@@ -1,5 +1,5 @@
 import { AbstractComponent } from './abststract.component.js';
-import { deleteCompletedTasks, showActiveTasks, showAllTasks, showDoneTasks } from '../task.services.js';
+import { deleteCompletedTasks, showActiveTasks, showAllTasks, showDoneTasks, sortByDate, sortByText} from '../task.services.js';
 
 
 export class HeaderComponent extends AbstractComponent{
@@ -14,6 +14,7 @@ export class HeaderComponent extends AbstractComponent{
         this.getShowAllBtn().addEventListener('click', this.findAllTasks.bind(this));
         this.getShowActiveBtn().addEventListener('click', this.findActiveTasks.bind(this));
         this.getDeleteCompletedBtn().addEventListener('click', this.removeCompletedTasks.bind(this));
+        this.getSelectMenu().addEventListener('change', this.sortTasks.bind(this));
     }
 
     getModalBtn() {
@@ -66,6 +67,18 @@ export class HeaderComponent extends AbstractComponent{
         showDoneTasks();
     }
 
+    getSelectMenu() {
+        return document.querySelector('.sort-options');
+    }
+    sortTasks() {
+        if (this.getSelectMenu().value === 'by-date'){
+            sortByDate();
+        } else if (this.getSelectMenu().value === 'by-text') {
+            sortByText();
+        }
+    }
+
+
 
     _getTemplate() {
         return(`<header class ="header">
@@ -81,6 +94,13 @@ export class HeaderComponent extends AbstractComponent{
                                 blacknote
                             </div>
                             <div class="right-side">
+                                <div class="sort-menu">
+                                    <select class="sort-options">
+                                        <option>Choose sort</option>
+                                        <option value="by-date">Sort by date</option>
+                                        <option value="by-text">Sort by text</option>
+                                    </select>
+                                </div>
                                 <p>Create new task</p> <input class="input" type="text">
                                 <button class="modal-btn"><p>&#10006;</p></button>
                            </div>
