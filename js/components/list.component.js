@@ -47,11 +47,16 @@ export class ListComponent extends AbstractComponent{
         this.getInput().addEventListener('keypress', this._createTask.bind(this));
         window.addEventListener('updateCheckbox', this.dataChange.bind(this));
         window.addEventListener('delete-task', this.dataChange.bind(this));
+        window.addEventListener('updateTasks', this.dataChange.bind(this));
+
+        window.addEventListener('show-done-tasks', this.dataChange.bind(this));
+        window.addEventListener('show-all-tasks', this.dataChange.bind(this));
+        window.addEventListener('show-active-tasks', this.dataChange.bind(this));
+        window.addEventListener('delete-completed-tasks', this.dataChange.bind(this));
 
     }
     dataChange(e) {
         this.render(e.detail.data)
-        console.log(e.detail.data)
     }
 
 

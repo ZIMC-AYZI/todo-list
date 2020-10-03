@@ -29,8 +29,52 @@ export function genId(array) {
 }
                 // custom event
 
+export function deleteCompletedTasks() {
+    taskData = taskData.filter(el => !el.isChecked)
+
+    emmitEvent('delete-completed-tasks', taskData)
+}
+
+
+export function showActiveTasks() {
+    const activeTasks = taskData.filter(el => {
+        console.log(el);
+        return !el.isChecked
+    });
+    console.log(activeTasks)
+    emmitEvent('show-active-tasks',activeTasks)
+}
+
+
+
+
+export function showAllTasks() {
+
+    emmitEvent('show-all-tasks', taskData)
+
+}
+
+export function showDoneTasks() {
+    const doneTasks = taskData.filter(el => el.isChecked === true);
+    emmitEvent('show-done-tasks', doneTasks)
+}
+
+
+
 export function updateData(array) {
     emmitEvent('update',array)
+}
+
+
+export function renameTasks(item) {
+   taskData.filter(el => {
+       if (el.id !== item.id){
+           el = item;
+           return el;
+       }
+   });
+
+    emmitEvent('updateTasks', taskData)
 }
 
 export function deleteTask(item) {

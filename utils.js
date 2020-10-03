@@ -36,7 +36,7 @@ export function isValid(str){
 }
 
 export function getCurrentDate(currentData) {
-    currentData = new Date().toLocaleDateString();
+    currentData = new Date().toISOString().substring(0, 10);
     return currentData;
 }
 
@@ -44,7 +44,7 @@ export function getDeadlineDate(deadLineData) {
     deadLineData = new Date();
     deadLineData.setDate(deadLineData.getDate() + 1);
 
-    return deadLineData.toLocaleDateString();
+    return deadLineData.toISOString().substring(0, 10);
 }
 
 
