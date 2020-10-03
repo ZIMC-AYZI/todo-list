@@ -2,7 +2,7 @@ import { AbstractComponent } from './abststract.component.js';
 import { taskData } from '../task.services.js';
 import { EditComponent } from './edit.component.js';
 import { BODY_ELEMENT, insertPosition, renderElement } from '../../utils.js';
-import { updateCheckboxStatus,deleteTask } from '../task.services.js';
+import { updateCheckboxStatus,deleteTask, showDoneTasks, showAllTasks, showActiveTasks,deleteCompletedTasks } from '../task.services.js';
 
 
 export class ItemComponent extends AbstractComponent{
@@ -95,10 +95,11 @@ export class ItemComponent extends AbstractComponent{
 
     }
 
-
     getCheckbox() {
         return this.getElement().firstChild.nextSibling
     }
+
+
 
 
     _getTemplate() {

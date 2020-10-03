@@ -37,7 +37,6 @@ export function isValid(str){
 
 export function getCurrentDate(currentData) {
     currentData = new Date().toISOString().substring(0, 10);
-    console.log(currentData)
     return currentData;
 }
 
