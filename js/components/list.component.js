@@ -2,7 +2,7 @@ import { AbstractComponent } from './abststract.component.js';
 import { ItemComponent } from './item.component.js';
 import { insertPosition, renderElement } from '../../utils.js';
 import { enterKey, isValid } from '../../utils.js';
-import { addToData, createData, updateData } from '../task.services.js';
+import { addToData, createData } from '../task.services.js';
 
 
 export class ListComponent extends AbstractComponent {
@@ -21,7 +21,6 @@ export class ListComponent extends AbstractComponent {
     if (isValid(value) && value !== '') {
       this.getInput().style.outline = 'none';
       addToData(createData(value));
-      updateData(this.taskData);
       this.getInput().value = '';
     } else {
       this.getInput().style.outline = '1px solid red';
@@ -56,6 +55,7 @@ export class ListComponent extends AbstractComponent {
 
   dataChange(e) {
     this.render(e.detail.data)
+    console.log(e.detail.data)
   }
 
   createItemComponent(el) {

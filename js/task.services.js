@@ -55,15 +55,15 @@ export function createData(title) {
 }
 
 export function addToData(obj) {
-  taskData.push(obj)
+  taskData.push(obj);
+
+  emmitEvent('update', taskData)
 }
 
 export function genId(array) {
   let id = array.length + 1;
   return id;
 }
-
-
 
 export function deleteCompletedTasks() {
   taskData = taskData.filter(el => !el.isChecked)
@@ -91,12 +91,6 @@ export function showDoneTasks() {
   emmitEvent('show-done-tasks', doneTasks)
 }
 
-
-export function updateData(array) {
-  emmitEvent('update', array)
-}
-
-
 export function renameTasks(item) {
   taskData.filter(el => {
 
@@ -110,7 +104,7 @@ export function renameTasks(item) {
 }
 
 export function deleteTask(item) {
-  taskData = taskData.filter(el => el.id !== item.id)
+  taskData = taskData.filter(el => el.id !== item.id);
 
   emmitEvent('delete-task', taskData)
 }
