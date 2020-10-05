@@ -2,76 +2,77 @@ import { AbstractComponent } from './abststract.component.js';
 import { ItemComponent } from './item.component.js';
 import { insertPosition, renderElement } from '../../utils.js';
 import { enterKey, isValid } from '../../utils.js';
-import { addToData, createData, updateData } from '../task.services.js';
+import { addToData, createData } from '../task.services.js';
 
 
-export class ListComponent extends AbstractComponent{
-    constructor(taskData) {
-        super();
-        this.taskData = taskData;
+export class ListComponent extends AbstractComponent {
+  constructor(taskData) {
+    super();
+    this.taskData = taskData;
+  }
+
+  getInput() {
+    return document.querySelector('.input')
+  }
+
+  ValueValidate() {
+    const value = this.getInput().value;
+
+    if (isValid(value) && value !== '') {
+      this.getInput().style.outline = 'none';
+      addToData(createData(value));
+      this.getInput().value = '';
+    } else {
+      this.getInput().style.outline = '1px solid red';
+      this.getInput().value = '';
     }
+  }
 
-    getInput() {
-        return document.querySelector('.input')
+  _createTask(e) {
+
+    if (e.keyCode === enterKey) {
+      this.ValueValidate();
     }
+  }
 
-    ValueValidate() {
-        const value = this.getInput().value;
+  _afterCreate() {
+    this.render(this.taskData);
+  }
 
-        if (isValid(value) && value !== '') {
-            this.getInput().style.outline = 'none';
-            addToData(createData(value));
-            updateData(this.taskData);
-            this.getInput().value = '';
-        } else {
-            this.getInput().style.outline = '1px solid red';
-            this.getInput().value = '';
-        }
-    }
+  addEventListeners() {
+    this.getInput().addEventListener('keypress', this._createTask.bind(this));
+    window.addEventListener('update', this.dataChange.bind(this));
+    window.addEventListener('updateCheckbox', this.dataChange.bind(this));
+    window.addEventListener('delete-task', this.dataChange.bind(this));
+    window.addEventListener('updateTasks', this.dataChange.bind(this));
+    window.addEventListener('show-done-tasks', this.dataChange.bind(this));
+    window.addEventListener('show-all-tasks', this.dataChange.bind(this));
+    window.addEventListener('show-active-tasks', this.dataChange.bind(this));
+    window.addEventListener('delete-completed-tasks', this.dataChange.bind(this));
+    window.addEventListener('sort-by-date', this.dataChange.bind(this));
+    window.addEventListener('sort-by-text', this.dataChange.bind(this));
+  }
 
-    _createTask(e) {
-        if (e.keyCode === enterKey) {
-            this.ValueValidate();
-        }
-    }
+  dataChange(e) {
+    this.render(e.detail.data)
+  }
 
+  createItemComponent(el) {
+    const itemComponent = new ItemComponent(el),
+      itemElement = itemComponent.getElement();
 
+    renderElement(this.getElement(), itemElement, insertPosition.BEFORE_END);
+    itemComponent.addEventListeners();
+  }
 
+  render(array) {
+    this.getElement().innerHTML = '';
+    array.forEach(el => {
+        this.createItemComponent(el)
+    });
+  }
 
-    _afterCreate() {
-        this.render(this.taskData);
-
-    }
-    addEventListeners() {
-        window.addEventListener('update', this.dataChange.bind(this));
-        this.getInput().addEventListener('keypress', this._createTask.bind(this));
-        window.addEventListener('updateCheckbox', this.dataChange.bind(this));
-        window.addEventListener('delete-task', this.dataChange.bind(this));
-        window.addEventListener('updateTasks', this.dataChange.bind(this));
-
-    }
-    dataChange(e) {
-        this.render(e.detail.data)
-        console.log(e.detail.data)
-    }
-
-
-
-
-    render(array) {
-        this.getElement().innerHTML = '';
-        array.forEach(el => {
-            const itemComponent = new ItemComponent(el),
-                itemElement = itemComponent.getElement();
-            renderElement(this.getElement(), itemElement, insertPosition.BEFORE_END);
-            itemComponent.addEventListeners();
-
-        });
-
-
-    }
-
-    _getTemplate() {
-        return(`<ul></ul>`)
-    }
+  _getTemplate() {
+    return (`<ul></ul>`)
+  }
 }

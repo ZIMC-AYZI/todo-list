@@ -27,9 +27,9 @@ export function createElement(template) {
 }
 
 export function isValid(str){
-    let pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/); //unacceptable chars
+    let pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+
     if (pattern.test(str)) {
-        console.log('error')
         return false;
     }
     return true;
@@ -37,7 +37,6 @@ export function isValid(str){
 
 export function getCurrentDate(currentData) {
     currentData = new Date().toISOString().substring(0, 10);
-    console.log(currentData)
     return currentData;
 }
 
@@ -46,19 +45,5 @@ export function getDeadlineDate(deadLineData) {
     deadLineData.setDate(deadLineData.getDate() + 1);
 
     return deadLineData.toISOString().substring(0, 10);
-}
-
-
-
-export function showModal(modal) {
-    if (modal) {
-        modal.remove()
-    } else {
-        modal.style.display = 'flex';
-    }
-}
-
-export function hideModal(modal) {
-    modal.style.display = 'none';
 }
 
