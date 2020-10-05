@@ -55,7 +55,6 @@ export class ListComponent extends AbstractComponent {
 
   dataChange(e) {
     this.render(e.detail.data)
-    console.log(e.detail.data)
   }
 
   createItemComponent(el) {

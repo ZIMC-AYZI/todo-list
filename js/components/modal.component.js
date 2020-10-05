@@ -1,6 +1,6 @@
 import { AbstractComponent } from './abststract.component.js';
 import { isValid } from '../../utils.js';
-import { addToData, taskData, genId } from '../task.services.js';
+import { addToData, taskData, generateId } from '../task.services.js';
 import { enterKey } from '../../utils.js';
 
 
@@ -44,7 +44,7 @@ export class ModalComponent extends AbstractComponent {
   createNewData() {
 
     return {
-      id: genId(taskData),
+      id: generateId(taskData),
       taskTitle: this.getInput().value,
       dateCreate: this.getCalendarStart().value,
       deadlineDate: this.getCalendarEnd().value,

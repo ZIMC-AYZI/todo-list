@@ -45,7 +45,7 @@ export let taskData = [
 
 export function createData(title) {
   return {
-    id: genId(taskData),
+    id: generateId(taskData),
     taskTitle: title,
     dateCreate: getCurrentDate(),
     deadlineDate: getDeadlineDate(),
@@ -57,10 +57,10 @@ export function createData(title) {
 export function addToData(obj) {
   taskData.push(obj);
 
-  emmitEvent('update', taskData)
+  emitEvent('update', taskData)
 }
 
-export function genId(array) {
+export function generateId(array) {
   let id = array.length + 1;
   return id;
 }
@@ -68,7 +68,7 @@ export function genId(array) {
 export function deleteCompletedTasks() {
   taskData = taskData.filter(el => !el.isChecked)
 
-  emmitEvent('delete-completed-tasks', taskData)
+  emitEvent('delete-completed-tasks', taskData)
 }
 
 
@@ -77,36 +77,36 @@ export function showActiveTasks() {
 
     return !el.isChecked
   });
-  emmitEvent('show-active-tasks', activeTasks)
+  emitEvent('show-active-tasks', activeTasks)
 }
 
 
 export function showAllTasks() {
-  emmitEvent('show-all-tasks', taskData)
+  emitEvent('show-all-tasks', taskData)
 }
 
 export function showDoneTasks() {
   const doneTasks = taskData.filter(el => el.isChecked === true);
 
-  emmitEvent('show-done-tasks', doneTasks)
+  emitEvent('show-done-tasks', doneTasks)
 }
 
 export function renameTasks(item) {
-  taskData.filter(el => {
+  taskData.forEach(el => {
 
-    if (el.id !== item.id) {
+    if (el.id === item.id) {
       el = item;
       return el;
     }
   });
 
-  emmitEvent('updateTasks', taskData)
+  emitEvent('updateTasks', taskData)
 }
 
 export function deleteTask(item) {
   taskData = taskData.filter(el => el.id !== item.id);
 
-  emmitEvent('delete-task', taskData)
+  emitEvent('delete-task', taskData)
 }
 
 export function updateCheckboxStatus(item) {
@@ -119,10 +119,10 @@ export function updateCheckboxStatus(item) {
     }
   });
 
-  emmitEvent('updateCheckbox', taskData)
+  emitEvent('updateCheckbox', taskData)
 }
 
-export function emmitEvent(type, data) {
+export function emitEvent(type, data) {
   window.dispatchEvent(new CustomEvent(type, {
     detail: {data}
   }))
@@ -138,7 +138,7 @@ export function sortByDate() {
     }
   });
 
-  emmitEvent('sort-by-date', taskData)
+  emitEvent('sort-by-date', taskData)
 }
 
 export function sortByText() {
@@ -151,5 +151,5 @@ export function sortByText() {
     }
   });
 
-  emmitEvent('sort-by-text', taskData)
+  emitEvent('sort-by-text', taskData)
 }
