@@ -1,6 +1,6 @@
 import { AbstractComponent } from './abststract.component.js';
 import { isValid } from '../../utils.js';
-import { addToData, taskData, updateData, genId } from '../task.services.js';
+import { addToData, taskData, genId } from '../task.services.js';
 import { enterKey } from '../../utils.js';
 
 
