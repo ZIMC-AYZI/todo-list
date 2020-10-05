@@ -1,7 +1,7 @@
 import { AbstractComponent } from './abststract.component.js';
 import { isValid } from '../../utils.js';
 import { addToData, taskData, generateId } from '../task.services.js';
-import { enterKey } from '../../utils.js';
+import { enterKey,ifModalDataValidate } from '../../utils.js';
 
 
 export class ModalComponent extends AbstractComponent {
@@ -63,7 +63,7 @@ export class ModalComponent extends AbstractComponent {
   ModalValueValidate() {
     const value = this.getInput().value;
 
-    if (isValid(value) && value !== '') {
+    if (isValid(value) && value !== '' && ifModalDataValidate(this.getCalendarStart(),this.getCalendarEnd())) {
       this.getInput().style.outline = 'none';
       addToData(this.createNewData());
       this.getInput().value = '';
