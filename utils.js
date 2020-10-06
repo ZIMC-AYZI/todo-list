@@ -47,3 +47,12 @@ export function getDeadlineDate(deadLineData) {
     return deadLineData.toISOString().substring(0, 10);
 }
 
+export function ifModalDataValidate(start, end) {
+    if (start.value !== '' && end.value !== '' && start.value <= end.value ){
+        end.style.border = 'none';
+        return true;
+    } else {
+        end.style.border = '3px solid red';
+        return false;
+    }
+}
